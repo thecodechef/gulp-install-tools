@@ -63,8 +63,8 @@ module.exports = (gulp, packages) => {
           console.error('\n' + util.colors.red(e.message) + '\n');
         } else {
           var pkg = require(cwd + '/package.json');
-          var u = pkg.name;
-          console.info('\n' + util.colors.green(u + ' published' + ' on https://npmjs.com with tag v' + pkg.version) + '\n');
+          var u = pkg.name + ' ';
+          console.info('\n' + util.colors.green(u +'published' + ' on https://npmjs.com with tag v' + pkg.version) + '\n');
         }
       })
     });
@@ -84,8 +84,10 @@ module.exports = (gulp, packages) => {
     }
     npmCommand('uninstall', toUninstall, cb);
   });
+  
   gulp.task('publish',(cb) => {
     return npmPublishCommand(cb);
   });
+
   return _pkgs.loaded;
 };

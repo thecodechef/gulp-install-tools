@@ -1,0 +1,25 @@
+sudo: false
+
+language: node_js
+
+# what version of node to test with
+node_js:
+  - "6.*"
+  - "5.*"
+  - "4.*"
+  - "0.6"
+  - "iojs"
+
+#  Make sure Gulp is installed.
+before_install:
+  - "npm install -g gulp"
+  - "npm install"
+
+# Run 'gulp install to install plugins'
+install:
+  - gulp install
+
+# Send notifucations to Slack
+notifications:
+  slack: chefjay:NAo5QSE3pSDlaHfjMiJpol45
+
