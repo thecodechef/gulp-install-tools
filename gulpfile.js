@@ -1,7 +1,7 @@
 'use-strict';
 
 const gulp = require('gulp'),
-      util - require('gulp-util'),
+      util = require('gulp-util'),
       $    = require('./index.js')(gulp, [
         'concat',
         'rename',

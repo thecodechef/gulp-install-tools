@@ -50,9 +50,28 @@ module.exports = (gulp, packages) => {
       });
     });
   };
+
+  var npmPublishCommand = (cb) => {
+    var npm = require('npm');
+    npm.load((e)=> {
+      if (e) {
+        console.error('\n' + util.colors.red(e.message) + '\n');
+        return cb();
+      }
+      npm.commands['publish']((e) => {
+        if (e) {
+          console.error('\n' + util.colors.red(e.message) + '\n');
+        } else {
+          var pkg = require(cwd + '/package.json');
+          var u = '<%= pkg.name %> ';
+          console.info('\n' + util.colors.green(u + cmd + 'ed' + 'on https://npmjs.com with tag v<%= pkg.version %>') + '\n');
+        }
+      })
+    });
+  };
   
   gulp.task('install',(cb) => {
-    npmCommand('install', _pkgs.notInstalled, cb);
+    return npmCommand('install', _pkgs.notInstalled, cb);
   });
   
   gulp.task('uninstall',(cb) => {
@@ -64,6 +83,9 @@ module.exports = (gulp, packages) => {
       if (packages.indexOf(installed[i].substr(5)) === -1) { toUninstall.push(installed[i]); }
     }
     npmCommand('uninstall', toUninstall, cb);
+  });
+  gulp.task('publish',(cb) => {
+    return npmPublishCommand(cb);
   });
   return _pkgs.loaded;
 };
