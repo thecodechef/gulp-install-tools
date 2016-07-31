@@ -4,6 +4,10 @@ module.exports = (gulp, packages) => {
 
   var me = "gulp-install-tools"
   var util = require('gulp-util');
+  var ms = require('merge-stream');
+  var bump = require('gulp-bump');
+  var tagVersion = require('gulp-tag-version');
+  var git = require('gulp-git');
   var _pkgs = { notInstalled: [], loaded: {} };
   var camel = (str) => {return str.replace(/-(\w)/g,(match, char) => { return char.toUpperCase(); });};
   var cwd = process.cwd();
@@ -86,7 +90,15 @@ module.exports = (gulp, packages) => {
   });
   
   gulp.task('publish',(cb) => {
-    return npmPublishCommand(cb);
+    var bumpTask = gulp.src(cwd + '/package.json')
+      .pipe(bump())
+      .pipe(gulp.dest(cwd));
+    var pushTask = gulp.src(cwd)
+      .pipe(tagVersion())
+      .pipe(git.add())
+      .pipe(git.commit('Version Bump.'))
+      .pipe(git.push('origin','master',{args: '--tags'}));
+    return ms(bumpTask,pushTask,npmPublishCommand(cb));
   });
 
   return _pkgs.loaded;
