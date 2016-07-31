@@ -1,6 +1,9 @@
 [![NPM version](https://badge.fury.io/js/gulp-install-tools.svg)](http://badge.fury.io/js/gulp-install-tools)
 [![GitHub tag](https://img.shields.io/github/tag/thecodechef/gulp-install-tools.svg?style=flat-square)](https://github.com/thecodechef/gulp-install-tools/releases/latest)
-[![GitHub tag](https://img.shields.io/github/release/thecodechef/gulp-install-tools.svg?style=flat-square)](https://github.com/thecodechef/gulp-install-tools/releases)
+[![GitHub issues](https://img.shields.io/github/issues/thecodechef/gulp-install-tools.svg?style=flat-square)](https://github.com/thecodechef/gulp-install-tools/issues?utf8=✓&q=is%3Aissue+is%3Aopen)
+[![GitHub watchers](https://img.shields.io/github/watchers/thecodechef/gulp-install-tools.svg?style=flat-square)](https://github.com/thecodechef/gulp-install-tools/watchers)
+[![GitHub stars](https://img.shields.io/github/stars/thecodechef/gulp-install-tools.svg?style=flat-square)](https://github.com/thecodechef/gulp-install-tools/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/thecodechef/gulp-install-tools.svg?style=flat-square)](https://github.com/thecodechef/gulp-install-tools/network)
 [![NPM](https://nodei.co/npm/gulp-install-tools.png)](https://nodei.co/npm/gulp-install-tools/)
 <a href="http://www.patreon.com/TheCodeChef"><img css="display:inline-block;" src="./patreon_support_me_btn.png" title="Suppport Me On Patreon"></a>
 
