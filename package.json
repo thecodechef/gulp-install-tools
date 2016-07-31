@@ -1,6 +1,6 @@
 {
   "name": "gulp-install-tools",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A Simple Toolset to Help Install & Uninstall Gulp Plugins.",
   "main": "index.js",
   "scripts": {

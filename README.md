@@ -5,7 +5,7 @@
 [![GitHub watchers](https://img.shields.io/github/watchers/thecodechef/gulp-install-tools.svg?style=flat-square)](https://github.com/thecodechef/gulp-install-tools/watchers)
 [![GitHub stars](https://img.shields.io/github/stars/thecodechef/gulp-install-tools.svg?style=flat-square)](https://github.com/thecodechef/gulp-install-tools/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/thecodechef/gulp-install-tools.svg?style=flat-square)](https://github.com/thecodechef/gulp-install-tools/network)
-[![NPM](https://nodei.co/npm/gulp-install-tools.png)](https://nodei.co/npm/gulp-install-tools/)
+[![NPM](https://nodei.co/npm/gulp-install-tools.png?downloads=true&stars=true)](https://nodei.co/npm/gulp-install-tools/)
 <a href="http://www.patreon.com/TheCodeChef"><img css="display:inline-block;" src="./patreon_support_me_btn.png" title="Suppport Me On Patreon"></a>
 
 # gulp-install-tools #
