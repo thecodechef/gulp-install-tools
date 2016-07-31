@@ -1,4 +1,4 @@
-[![NPM version](https://badge.fury.io/js/gulp-install-tools.svg)](http://badge.fury.io/js/gulp-install-tools)
+[![NPM version](https://img.shields.io/npm/v/gulp-install-tools.svg)](http://badge.fury.io/js/gulp-install-tools)
 [![GitHub tag](https://img.shields.io/github/tag/thecodechef/gulp-install-tools.svg?style=flat-square)](https://github.com/thecodechef/gulp-install-tools/releases/latest)
 [![GitHub issues](https://img.shields.io/github/issues/thecodechef/gulp-install-tools.svg?style=flat-square)](https://github.com/thecodechef/gulp-install-tools/issues?utf8=✓&q=is%3Aissue+is%3Aopen)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/thecodechef/gulp-install-tools.svg?style=flat-square)](https://github.com/thecodechef/gulp-install-tools/pulls?utf8=✓&q=is%3Apr+is%3Aopen)
