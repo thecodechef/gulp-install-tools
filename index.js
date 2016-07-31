@@ -64,7 +64,7 @@ module.exports = (gulp, packages) => {
         } else {
           var pkg = require(cwd + '/package.json');
           var u = '<%= pkg.name %> ';
-          console.info('\n' + util.colors.green(u + cmd + 'ed' + 'on https://npmjs.com with tag v<%= pkg.version %>') + '\n');
+          console.info('\n' + util.colors.green(u + 'published' + 'on https://npmjs.com with tag v<%= pkg.version %>') + '\n');
         }
       })
     });
