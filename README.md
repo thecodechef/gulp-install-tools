@@ -16,13 +16,13 @@ sudo npm install gulp-install-tools --save-dev
 
 ## Usage ##
 
-### Before You Require gulp-install-tools: ###
+### Before: ###
 
 ```
   sudo npm install gulp-{util,data,add-src,notify,filter,git,include,template,imagemin,tag-version,bump,flatmap,if,concat,uglify,responsive,rename,replace,pug,verb}
 ```
 
-### After You Require gulp-install-tools: ###
+### After: ###
 
 ```js
 const gulp = require('gulp'),
