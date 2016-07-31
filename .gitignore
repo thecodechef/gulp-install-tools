@@ -1,0 +1,16 @@
+# files to ignore
+.npmrc
+*.sublime-project
+*.sublime-workspace
+._*
+.DS*
+
+# folders to ignore
+.git/
+.idea/
+node_modules/
+bower_components/
+components/
+tmp/
+temp/
+vendor/

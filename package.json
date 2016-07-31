@@ -1,0 +1,29 @@
+{
+  "name": "gulp-install-tools",
+  "version": "1.0.0",
+  "description": "A Simple Toolset to Help Install & Uninstall Gulp Plugins.",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/thecodechef/gulp-install-tools.git"
+  },
+  "keywords": [
+    "gulp",
+    "gulpfriendly",
+    "plugin",
+    "install",
+    "uninstall",
+    "tools"
+  ],
+  "author": "Jeremy Bolding <cyberchefjay@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.7",
+    "npm": "^2.14.12"
+  },
+  "devDependencies": {}
+}
