@@ -124,7 +124,7 @@ module.exports = (gulp, packages) => {
       .pipe(gulp.dest(cwd));
   });
   
-  gulp.task('publish',['bump','tag','commit'], (cb) => {
+  gulp.task('publish',['tag','commit'], (cb) => {
     return npmPublishCommand(cb);
   })
 
