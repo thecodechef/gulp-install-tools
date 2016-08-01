@@ -4,7 +4,13 @@
   "description": "A Simple Toolset to Help Install & Uninstall Gulp Plugins.",
   "main": "index.js",
   "scripts": {
-    "test": "gulp install;gulp"
+    "test": "gulp install;gulp;cat test/package.json",
+    "patch:test": "gulp install;gulp --patch;cat test/package.json",
+    "minor:test": "gulp install;gulp --minor;cat test/package.json",
+    "major:test": "gulp install;gulp --major;cat test/package.json",
+    "tag:test":"gulp install;gulp tag",
+    "commit:test": "gulp install;gulp commit",
+    "publish:test": "gulp install;gulp publish"
   },
   "repository": {
     "type": "git",
@@ -21,9 +27,18 @@
   "author": "Jeremy Bolding <cyberchefjay@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "fs": "0.0.2",
     "gulp": "^3.9.1",
+    "gulp-bump": "^2.2.0",
+    "gulp-git": "^1.10.0",
+    "gulp-if": "^2.0.1",
     "gulp-util": "^3.0.7",
-    "npm": "^2.14.12"
+    "npm": "^2.14.12",
+    "yargs": "^4.8.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "gulp-concat": "^2.6.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4"
+  }
 }

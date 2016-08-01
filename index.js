@@ -2,18 +2,23 @@
 module.exports = (gulp, packages) => {
   'use-strict';
 
-  var me = "gulp-install-tools"
-  var util = require('gulp-util');
-  var _pkgs = { notInstalled: [], loaded: {} };
-  var camel = (str) => {return str.replace(/-(\w)/g,(match, char) => { return char.toUpperCase(); });};
-  var cwd = process.cwd();
+  var me      = "gulp-install-tools"
+  var util    = require('gulp-util');
+  var _if     = require('gulp-if');
+  var bump    = require('gulp-bump');
+  var git     = require('gulp-git');
+  var fs      = require('fs');
+  var argv    = require('yargs').argv;
+  var _pkgs   = { notInstalled: [], loaded: {} };
+  var camel   = (str) => {return str.replace(/-(\w)/g,(match, char) => { return char.toUpperCase(); });};
+  var cwd     = process.cwd();
   
   for (var i = 0; i < packages.length; i++) {
-    var pkg = packages[i].split(/\sas\s/, 2);
-    pkg[1] = camel(pkg[pkg.length === 2 ? 1 : 0]);
-    pkg[0] = pkg[0].replace(/([A-Z])/g, '-$1').toLowerCase();
-    packages[i] = pkg[0];
-    var m = 'gulp-' + pkg[0];
+    var pkg      = packages[i].split(/\sas\s/, 2);
+    pkg[1]       = camel(pkg[pkg.length === 2 ? 1 : 0]);
+    pkg[0]       = pkg[0].replace(/([A-Z])/g, '-$1').toLowerCase();
+    packages[i]  = pkg[0];
+    var m        = 'gulp-' + pkg[0];
     try {
       if (_pkgs.loaded[pkg[1]]) {
         console.warn('[' + util.colors.green(me) + '] ' + util.colors.red('Duplicate package: ' + pkg[1]));
@@ -84,8 +89,42 @@ module.exports = (gulp, packages) => {
     }
     npmCommand('uninstall', toUninstall, cb);
   });
+  
+  gulp.task('bump',() => {
+    return gulp.src(cwd + '/package.json')
+      .pipe(_if(Object.keys(argv).length === 2, bump()))
+      .pipe(_if(argv.patch, bump()))
+      .pipe(_if(argv.minor, bump({type: 'minor'})))
+      .pipe(_if(argv.major, bump({type: 'major'})))
+      .pipe(gulp.dest(cwd));
+  });
 
-  gulp.task('publish', (cb) => {
+  gulp.task('tag', (cb) => {
+    var version = JSON.parse(fs.readFileSync(cwd+'/package.json','utf-8')).version;
+    git.init((err) => {
+      if (err) {
+        util.log(util.colors.bold.red('\n'+err.message+'\n'));
+      } else {
+        util.log(util.colors.bold.green('Empty Git Repo Intialized.'));
+      }
+    });
+    git.tag('v'+version,'v'+version, (error) => {
+      if (error) {
+        return cb(error);
+      }
+      git.push('origin','master',{args:'--tags'},cb);
+    });
+  });
+
+  gulp.task('commit',() => {
+    var version = JSON.parse(fs.readFileSync(cwd+'/package.json','utf-8')).version;
+    return gulp.src(cwd)
+      .pipe(git.add())
+      .pipe(git.commit('Version Bumped to v'+version))
+      .pipe(gulp.dest(cwd));
+  });
+  
+  gulp.task('publish',['bump','tag','commit'], (cb) => {
     return npmPublishCommand(cb);
   })
 

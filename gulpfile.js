@@ -2,12 +2,22 @@
 
 const gulp = require('gulp'),
       util = require('gulp-util'),
+      argv = require('yargs').argv,
+      fs   = require('fs'),
       $    = require('./index.js')(gulp, [
         'concat',
         'rename',
-        'replace'
+        'replace',
+        'bump',
+        'if',
+        'git'
       ]);
 
 gulp.task('default',() => {
-	util.log(util.colors.bold.green('to Install or to Uninstall?'));
+	gulp.src('./test/package.json')
+	.pipe($.if((Object.keys(argv).length === 2), $.bump()))
+	.pipe($.if(argv.patch, $.bump({type: 'patch'})))
+	.pipe($.if(argv.minor, $.bump({type: 'minor'})))
+	.pipe($.if(argv.major, $.bump({type: 'major'})))
+	.pipe(gulp.dest('./test'));
 });
