@@ -4,7 +4,7 @@
   "description": "A Simple Toolset to Help Install & Uninstall Gulp Plugins.",
   "main": "index.js",
   "scripts": {
-    "test": "gulp install"
+    "test": "gulp install;gulp"
   },
   "repository": {
     "type": "git",

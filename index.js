@@ -4,12 +4,6 @@ module.exports = (gulp, packages) => {
 
   var me = "gulp-install-tools"
   var util = require('gulp-util');
-  var ms = require('merge-stream');
-  var bump = require('gulp-bump');
-  var tagVersion = require('gulp-tag-version');
-  var gFunc = require('gulp-function');
-  var addSrc = require('gulp-add-src');
-  var git = require('gulp-git');
   var _pkgs = { notInstalled: [], loaded: {} };
   var camel = (str) => {return str.replace(/-(\w)/g,(match, char) => { return char.toUpperCase(); });};
   var cwd = process.cwd();
@@ -90,20 +84,8 @@ module.exports = (gulp, packages) => {
     }
     npmCommand('uninstall', toUninstall, cb);
   });
-  
-  gulp.task('bump',() => {
-    var exec = require('child_process').exec;
-    return gulp.src(cwd + '/package.json')
-      .pipe(bump())
-      .pipe(gulp.dest(cwd))
-      .pipe(addSrc(cwd))
-      .pipe(tagVersion())
-      .pipe(git.add())
-      .pipe(exec('git commit -am "Version Bump"'))
-      .pipe(git.push('origin','master',{args: '--tags'}));
-  });
 
-  gulp.task('publish',['bump'], (cb) => {
+  gulp.task('publish', (cb) => {
     return npmPublishCommand(cb);
   })
 
