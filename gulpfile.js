@@ -9,5 +9,5 @@ const gulp = require('gulp'),
       ]);
 
 gulp.task('default',() => {
-	util.log($.util.colors.bold.red('to Install or to Uninstall?'));
+	util.log(util.colors.bold.green('to Install or to Uninstall?'));
 });
