@@ -91,23 +91,32 @@ module.exports = (gulp, packages) => {
   });
   
   gulp.task('bump',() => {
+    var version = JSON.parse(fs.readFileSync(cwd+'/package.json','utf-8')).version;
     return gulp.src(cwd + '/package.json')
       .pipe(_if(Object.keys(argv).length === 2, bump()))
       .pipe(_if(argv.patch, bump()))
       .pipe(_if(argv.minor, bump({type: 'minor'})))
       .pipe(_if(argv.major, bump({type: 'major'})))
+      .pipe(_if(argv.pre, bump({type: 'prerelease'})))
       .pipe(gulp.dest(cwd));
   });
-
-  gulp.task('tag', (cb) => {
-    var version = JSON.parse(fs.readFileSync(cwd+'/package.json','utf-8')).version;
+  
+  gulp.task('init',(cb) => {
+    if (fs.readdirSync(cwd + '/.git')) {
+      util.log(util.colors.bold.yellow('\n\nGit Repo Already Intialized.\n'));
+      return cb();
+    }
     git.init((err) => {
       if (err) {
-        util.log(util.colors.bold.red('\n'+err.message+'\n'));
+        return cb(err);
       } else {
-        util.log(util.colors.bold.green('Empty Git Repo Intialized.'));
+        util.log(util.colors.bold.green('\nEmpty Git Repo Intialized.\n'));
       }
-    });
+    }, cb);
+  });
+
+  gulp.task('tag',['init','bump'], (cb) => {
+    var version = JSON.parse(fs.readFileSync(cwd+'/package.json','utf-8')).version;
     git.tag('v'+version,'v'+version, (error) => {
       if (error) {
         return cb(error);
@@ -116,11 +125,12 @@ module.exports = (gulp, packages) => {
     });
   });
 
-  gulp.task('commit',() => {
+  gulp.task('commit',['init'],() => {
     var version = JSON.parse(fs.readFileSync(cwd+'/package.json','utf-8')).version;
+    var message = argv.message || 'Version Bumped to v'+version;
     return gulp.src(cwd)
       .pipe(git.add())
-      .pipe(git.commit('Version Bumped to v'+version))
+      .pipe(git.commit(message,{args: '-a'}))
       .pipe(gulp.dest(cwd));
   });
   
