@@ -24,7 +24,7 @@ sudo npm install gulp-install-tools --save-dev
 ### Before: ###
 
 ```
-  sudo npm install gulp-{util,data,add-src,notify,filter,git,include,template,imagemin,tag-version,bump,flatmap,if,concat,uglify,responsive,rename,replace,pug,verb}
+  sudo npm install --save-dev gulp-{util,data,add-src,notify,filter,git,include,template,imagemin,tag-version,bump,flatmap,if,concat,uglify,responsive,rename,replace,pug,verb}
 ```
 
 ### After: ###
@@ -68,6 +68,56 @@ _*or*_
 # whatever is not in the list will be uninstalled
 gulp uninstall
 ```
+
+### Now you can use in gulpfile.js ###
+
+```js
+  gulp.task('default',() => {
+    return gulp.src('./templates/pages/*.pug')
+      .pipe($.pug({pretty: true}))
+      .pipe(gulp.dest('./dist'));
+  });
+```
+
+## Generated Tasks ##
+
+### Install Task ###
+
+> The `install` task is to install tasks that are in your list of specified packages
+
+#### Example: ####
+```bash
+gulp install
+```
+
+### Uninstall Task ###
+
+> The `uninstall` task is to uninstall tasks that are not in your list of specified packages
+
+#### Example: ####
+```bash
+gulp uninstall
+```
+
+### Publish Task ###
+
+**Note:** This is still a _work in progress_ so take caution when using.
+
+> The `publish` task is to publish your package to npmjs
+> very helpful if your developing your own gulp plugin or a normal npm package
+
+#### Example: ####
+```bash
+gulp publish
+```
+
+
+## TODO ##
+
+**1.0.17**:
+  + Add auto-bumping and git-tagging feature to publish task _main priority_ - Help Wanted
+  + Add more tasks to work with npm and git _important_ - Help Wanted
+  + Clean & Refactor Code - Help Wanted
 
 ## Author ##
 

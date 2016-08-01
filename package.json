@@ -1,6 +1,6 @@
 {
   "name": "gulp-install-tools",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "A Simple Toolset to Help Install & Uninstall Gulp Plugins.",
   "main": "index.js",
   "scripts": {
@@ -22,13 +22,7 @@
   "license": "MIT",
   "dependencies": {
     "gulp": "^3.9.1",
-    "gulp-add-src": "^0.2.0",
-    "gulp-bump": "^2.2.0",
-    "gulp-function": "^1.3.6",
-    "gulp-git": "^1.10.0",
-    "gulp-tag-version": "^1.3.0",
     "gulp-util": "^3.0.7",
-    "merge-stream": "^1.0.0",
     "npm": "^2.14.12"
   },
   "devDependencies": {}
