@@ -27,7 +27,6 @@
   "author": "Jeremy Bolding <cyberchefjay@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "fs": "0.0.2",
     "gulp": "^3.9.1",
     "gulp-bump": "^2.2.0",
     "gulp-git": "^1.10.0",
