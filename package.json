@@ -28,16 +28,16 @@
   "license": "MIT",
   "dependencies": {
     "gulp": "^3.9.1",
-    "gulp-bump": "^2.2.0",
-    "gulp-git": "^1.10.0",
+    "gulp-bump": "^3.1.1",
+    "gulp-git": "^2.8.0",
     "gulp-if": "^2.0.1",
     "gulp-util": "^3.0.7",
-    "npm": "^2.14.12",
-    "yargs": "^4.8.1"
+    "npm": "^6.4.1",
+    "yargs": "^12.0.5"
   },
   "devDependencies": {
     "gulp-concat": "^2.6.0",
     "gulp-rename": "^1.2.2",
-    "gulp-replace": "^0.5.4"
+    "gulp-replace": "^1.0.0"
   }
 }
